@@ -1,0 +1,33 @@
+*{
+    margin:0 0;
+    padding: 0 0;
+}
+.navbar{
+    margin:0 0;
+    padding: 0 0;
+    background-color:blueviolet;
+}
+
+.navitems{
+    display:flex;
+    flex-direction:row;
+    list-style-type: none;
+    margin: 5px 5px;
+    padding: 5px 5px;
+}
+
+.navlinks{
+    margin: 5px 5px;
+    padding: 5px 5px;
+}
+.link{
+    text-decoration:none;
+    color:bisque;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    font-size:20px;
+}
+
+.link:hover{
+    font-weight: bold;
+}
