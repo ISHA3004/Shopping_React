@@ -9,7 +9,7 @@ const Products = ({productItems , handleAddProduct}) => {
           return(
           <div className="card">
             <div className="cardimg">
-                <img src={item.imgurl} alt={item.itemname}/>
+                <img src={item.url} alt={item.itemname}/>
             </div>
             <div className="carddetails">
                 <div className="proddetails">

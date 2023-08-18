@@ -1,7 +1,25 @@
 import React from 'react'
 import './Contact.css'
+import { useState } from 'react'
 
 const Contact = () => {
+    
+  const [details,setDetails] = useState({fname:"",lname:"",email:"",telnum:"",mess:""});
+
+ 
+  const handleSend = (e)=>{
+
+   e.preventDefault();
+      console.log(details);
+    fetch("http://localhost:5000/post",{
+       "method":"POST",
+       "headers":{
+         "Accept":"*/*",
+         "Content-Type":"application/json"
+       },
+       "body":JSON.stringify(details)
+     }).then(res=> res.json()).then(data => {if(data.status === 'ok'){alert("Details saved successffully")}}).catch(err => {console.log(err)})
+  }
   return (
     <div className="contactbox">
       <div className="webinfo">
@@ -11,13 +29,13 @@ const Contact = () => {
       </div>
       <div className="custinfo">
         <form>
-            <input type="text" placeholder='First Name'/>
-            <input type="text" placeholder='Last Name'/>
-            <input type="email" placeholder='Email Address'/>
-            <input type="tel" placeholder='Mobile Number'/>
-            <input type="textarea"  placeholder="Write your message here"/>
+            <input type="text" placeholder='First Name' name="fname" onChange={(e)=>{setDetails({...details,fname:e.target.value})}}/>
+            <input type="text" placeholder='Last Name' name="lname" onChange={(e)=>{setDetails({...details,lname:e.target.value})}}/>
+            <input type="email" placeholder='Email Address' name='email'onChange={(e)=>{setDetails({...details,email:e.target.value})}}/>
+            <input type="tel" placeholder='Mobile Number' name="telnum" onChange={(e)=>{setDetails({...details,telnum:e.target.value})}}/>
+            <input type="textarea"  placeholder="Write your message here" onChange={(e)=>{setDetails({...details,mess:e.target.value})}}/>
             <div>
-            <button>Send</button>
+            <input type="submit" onClick={handleSend} value="Send"/>
             </div>
             
         </form>
